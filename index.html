@@ -19,7 +19,6 @@ body{
   background:black;
 }
 
-/* Видео фон */
 .video-bg{
   position:fixed;
   top:0;
@@ -36,7 +35,6 @@ body{
   object-fit:cover;
 }
 
-/* Полупрозрачный overlay для контраста */
 .overlay{
   position:fixed;
   top:0;
@@ -47,7 +45,6 @@ body{
   z-index:-1;
 }
 
-/* Основная карточка */
 .card{
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(10px);
@@ -84,7 +81,6 @@ button:hover{transform:scale(1.1);}
 
 .hidden{display:none;margin-top:20px;font-size:22px;}
 
-/* Цветы */
 .flower{
   position:fixed;
   top:-20px;
@@ -92,7 +88,6 @@ button:hover{transform:scale(1.1);}
   animation:fall linear forwards;
 }
 
-/* Сердечки */
 .heart{
   position:fixed;
   font-size:20px;
@@ -100,7 +95,6 @@ button:hover{transform:scale(1.1);}
   animation:heartFloat 1s forwards;
 }
 
-/* Открытка */
 .open-card{
   position:fixed;
   top:50%;
@@ -117,7 +111,6 @@ button:hover{transform:scale(1.1);}
   animation:fadeIn 0.8s ease;
 }
 
-/* Анимации */
 @keyframes fall{
   to{transform:translateY(110vh);}
 }
@@ -136,30 +129,33 @@ button:hover{transform:scale(1.1);}
 
 <body>
 
-<!-- Видео фон -->
 <div class="video-bg">
-  <video autoplay loop muted>
+  <video id="bgVideo" autoplay loop muted>
     <source src="wiege_alien_stage.mp4" type="video/mp4">
   </video>
 </div>
 
 <div class="overlay"></div>
 
-<!-- Основная карточка -->
 <div class="card card-inner">
   <h1>С 8 Марта, Дашечка 🌸</h1>
   <p>Ты самая прекрасная, милая и удивительная девочка. Пусть твоя улыбка всегда освещает этот мир, а видео на фоне подарит тебе настроение счастья и тепла.</p>
-  <button onclick="openCard()">Нажми</button>
+  <button onclick="activateVideoAndCard()">Нажми</button>
 </div>
 
-<!-- Открытка -->
 <div id="openCard" class="open-card">
   <button onclick="closeCard()" style="position:absolute;top:10px;right:15px;font-size:20px;background:none;border:none;color:#ff4f8b;cursor:pointer;">×</button>
   <p>Спасибо тебе за 2 месяца, проведённые вместе. За это время мне оказалось трудно делать что-либо или смотреть что-то без твоего присутствия, твоих комментариев или твоего молчания, даже с ним мне было спокойнее. Я люблю тебя, Дашечка.</p>
 </div>
 
 <script>
-function openCard(){
+function activateVideoAndCard(){
+  // включаем звук и запускаем видео
+  const video = document.getElementById('bgVideo');
+  video.muted = false;
+  video.play();
+
+  // открываем открытку
   const card = document.getElementById('openCard');
   card.style.display='block';
   card.style.animation='fadeIn 0.8s ease';
@@ -170,7 +166,7 @@ function closeCard(){
   card.style.display='none';
 }
 
-/* Падающие цветы */
+// падающие цветы
 function createFlower(){
   const flower=document.createElement('div');
   flower.className='flower';
@@ -182,7 +178,7 @@ function createFlower(){
 }
 setInterval(createFlower,500);
 
-/* Сердечки при клике */
+// сердечки при клике
 document.addEventListener('click',function(e){
   const heart=document.createElement('div');
   heart.className='heart';
