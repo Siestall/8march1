@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>С 8 Марта, Даша!</title>
 
 <style>
-
 body{
 margin:0;
 font-family:'Segoe UI',sans-serif;
@@ -20,8 +19,6 @@ overflow:hidden;
 background:black;
 }
 
-/* видео фон */
-
 .video-bg{
 position:fixed;
 top:0;
@@ -29,15 +26,15 @@ left:0;
 width:100%;
 height:100%;
 z-index:-2;
+overflow:hidden;
 }
 
 .video-bg iframe{
 width:100vw;
 height:100vh;
 pointer-events:none;
+border:none;
 }
-
-/* затемнение */
 
 .overlay{
 position:fixed;
@@ -59,15 +56,8 @@ max-width:600px;
 animation:fadeIn 2s ease;
 }
 
-h1{
-font-size:42px;
-}
-
-p{
-font-size:20px;
-line-height:1.6;
-}
-
+h1{font-size:42px;}
+p{font-size:20px;line-height:1.6;}
 button{
 margin-top:25px;
 padding:12px 25px;
@@ -79,142 +69,54 @@ color:#ff4f8b;
 cursor:pointer;
 transition:0.3s;
 }
-
-button:hover{
-transform:scale(1.1);
-}
-
-.hidden{
-display:none;
-margin-top:20px;
-font-size:22px;
-}
-
-/* цветы */
-
-.flower{
-position:fixed;
-top:-20px;
-font-size:24px;
-animation:fall linear forwards;
-}
-
-/* сердечки */
-
-.heart{
-position:fixed;
-font-size:20px;
-pointer-events:none;
-animation:heartFloat 1s forwards;
-}
-
-@keyframes fall{
-to{
-transform:translateY(110vh);
-}
-}
-
-@keyframes heartFloat{
-0%{transform:scale(1);opacity:1}
-100%{transform:translateY(-80px) scale(1.5);opacity:0}
-}
-
-@keyframes fadeIn{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
-}
-
+button:hover{transform:scale(1.1);}
+.hidden{display:none;margin-top:20px;font-size:22px;}
+.flower{position:fixed;top:-20px;font-size:24px;animation:fall linear forwards;}
+.heart{position:fixed;font-size:20px;pointer-events:none;animation:heartFloat 1s forwards;}
+@keyframes fall{to{transform:translateY(110vh);}}
+@keyframes heartFloat{0%{transform:scale(1);opacity:1}100%{transform:translateY(-80px) scale(1.5);opacity:0}}
+@keyframes fadeIn{from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);}}
 </style>
 </head>
 
 <body>
 
 <div class="video-bg">
-<iframe
-id="bgvideo"
-src="https://www.youtube.com/embed/rrngM9DmDfk?controls=0&loop=1&playlist=rrngM9DmDfk"
-frameborder="0"
-allow="autoplay"
-></iframe>
+<iframe src="https://vk.com/video_ext.php?oid=-216404212&id=456239269&hash=717b2371abb83f88&hd=4" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
 </div>
 
 <div class="overlay"></div>
 
 <div class="card">
-
 <h1>С 8 Марта, Даша! 🌸</h1>
-
-<p>
-Даша, ты самая прекрасная, нежная и удивительная девушка.  
-Пусть твоя улыбка всегда освещает этот мир,  
-а каждый день приносит счастье и радость.
-</p>
-
+<p>Даша, ты самая прекрасная, нежная и удивительная девушка.<br>Пусть твоя улыбка всегда освещает этот мир, а каждый день приносит счастье и радость.</p>
 <button onclick="showMessage()">Нажми сюда ❤️</button>
-
-<div id="msg" class="hidden">
-Я люблю тебя, Даша 💖
-</div>
-
+<div id="msg" class="hidden">Я люблю тебя, Даша 💖</div>
 </div>
 
 <script>
-
-/* запуск видео при первом клике */
-
-document.body.addEventListener("click", function(){
-
-document.getElementById("bgvideo").src =
-"https://www.youtube.com/embed/rrngM9DmDfk?autoplay=1&controls=0&loop=1&playlist=rrngM9DmDfk";
-
-},{once:true});
-
-/* показать сообщение */
-
 function showMessage(){
 document.getElementById('msg').style.display='block';
 }
-
-/* падающие цветы */
-
 function createFlower(){
-
 const flower=document.createElement('div');
 flower.className='flower';
 flower.innerHTML='🌸';
-
 flower.style.left=Math.random()*100+'vw';
 flower.style.animationDuration=(3+Math.random()*5)+'s';
-
 document.body.appendChild(flower);
-
-setTimeout(()=>{
-flower.remove();
-},8000);
-
+setTimeout(()=>{flower.remove();},8000);
 }
-
 setInterval(createFlower,500);
-
-/* сердечки при клике */
-
 document.addEventListener('click',function(e){
-
 const heart=document.createElement('div');
 heart.className='heart';
 heart.innerHTML='💖';
-
 heart.style.left=e.clientX+'px';
 heart.style.top=e.clientY+'px';
-
 document.body.appendChild(heart);
-
-setTimeout(()=>{
-heart.remove();
-},1000);
-
+setTimeout(()=>{heart.remove();},1000);
 });
-
 </script>
 
 </body>
