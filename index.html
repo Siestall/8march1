@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>С 8 Марта, Даша!</title>
+<title>С 8 Марта, Дашечка 🌸</title>
 
 <style>
 body{
@@ -56,7 +56,7 @@ max-width:600px;
 animation:fadeIn 2s ease;
 }
 
-h1{font-size:42px;}
+h1{font-size:42px; margin-bottom:10px;}
 p{font-size:20px;line-height:1.6;}
 button{
 margin-top:25px;
@@ -73,6 +73,27 @@ button:hover{transform:scale(1.1);}
 .hidden{display:none;margin-top:20px;font-size:22px;}
 .flower{position:fixed;top:-20px;font-size:24px;animation:fall linear forwards;}
 .heart{position:fixed;font-size:20px;pointer-events:none;animation:heartFloat 1s forwards;}
+.card-inner{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+}
+.open-card{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%, -50%);
+background:rgba(255,255,255,0.95);
+color:#ff4f8b;
+padding:40px;
+border-radius:25px;
+max-width:600px;
+box-shadow:0 20px 40px rgba(0,0,0,0.3);
+z-index:10;
+display:none;
+animation:fadeIn 1s ease;
+}
 @keyframes fall{to{transform:translateY(110vh);}}
 @keyframes heartFloat{0%{transform:scale(1);opacity:1}100%{transform:translateY(-80px) scale(1.5);opacity:0}}
 @keyframes fadeIn{from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);}}
@@ -87,16 +108,20 @@ button:hover{transform:scale(1.1);}
 
 <div class="overlay"></div>
 
-<div class="card">
-<h1>С 8 Марта, Даша! 🌸</h1>
-<p>Даша, ты самая прекрасная, нежная и удивительная девушка.<br>Пусть твоя улыбка всегда освещает этот мир, а каждый день приносит счастье и радость.</p>
-<button onclick="showMessage()">Нажми сюда ❤️</button>
-<div id="msg" class="hidden">Я люблю тебя, Даша 💖</div>
+<div class="card card-inner">
+<h1>С 8 Марта, Дашечка 🌸</h1>
+<p>Ты самая прекрасная, милая и удивительная девочка. Пусть твоя улыбка всегда освещает этот мир, а видео на фоне подарит тебе настроение счастья и тепла.</p>
+<button onclick="openCard()">Нажми</button>
+</div>
+
+<div id="openCard" class="open-card">
+<p>Спасибо тебе за 2 месяца, проведённые вместе. За это время мне оказалось трудно делать что-либо или смотреть что-то без твоего присутствия, твоих комментариев или даже твоего молчания — ведь даже тогда мне было спокойнее. Ты стала важной частью моей жизни, и каждый момент рядом с тобой делает меня счастливее. Сегодня твой день, и я хочу, чтобы ты чувствовала всю мою любовь и заботу. Я люблю тебя, Дашечка. ❤️</p>
+<p>Спасибо за твою нежность, терпение и радость, которую ты приносишь в каждый мой день. Пусть этот день будет наполнен смехом, счастливыми моментами и ощущением того, что ты особенная для меня. 🌸💖</p>
 </div>
 
 <script>
-function showMessage(){
-document.getElementById('msg').style.display='block';
+function openCard(){
+document.getElementById('openCard').style.display='block';
 }
 function createFlower(){
 const flower=document.createElement('div');
